@@ -6,12 +6,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class BasicInfoStep extends StatefulWidget {
+class InicioEvento extends StatefulWidget {
   @override
-  _BasicInfoStepState createState() => _BasicInfoStepState();
+  _InicioEventoState createState() => _InicioEventoState();
 }
 
-class _BasicInfoStepState extends State<BasicInfoStep> {
+class _InicioEventoState extends State<InicioEvento> {
   @override
   Widget build(BuildContext context) {
     Color orange = Theme.of(context).secondaryHeaderColor;
@@ -34,7 +34,7 @@ class _BasicInfoStepState extends State<BasicInfoStep> {
               isBlue: false,
               onChanged: signupBloc.isValidBasicForm,
               icon: FontAwesomeIcons.userAlt,
-              hintText: "Nome e Sobrenome",
+              hintText: "Título do Evento:",
               isPassword: false,
               inputType: TextInputType.text,
             ),
@@ -43,7 +43,7 @@ class _BasicInfoStepState extends State<BasicInfoStep> {
               controller: signupBloc.emailController,
               isBlue: false,
               icon: FontAwesomeIcons.solidEnvelope,
-              hintText: "E-mail",
+              hintText: "Local:",
               onChanged: signupBloc.isValidBasicForm,
               isPassword: false,
               inputType: TextInputType.emailAddress,
@@ -54,7 +54,7 @@ class _BasicInfoStepState extends State<BasicInfoStep> {
               controller: signupBloc.passController,
               isBlue: false,
               icon: FontAwesomeIcons.lock,
-              hintText: "Senha",
+              hintText: "Hora Iício",
               isPassword: true,
               inputType: TextInputType.text,
             ),
@@ -64,7 +64,7 @@ class _BasicInfoStepState extends State<BasicInfoStep> {
               isBlue: false,
               onChanged: signupBloc.isValidBasicForm,
               icon: FontAwesomeIcons.lock,
-              hintText: "Confirmação de senha",
+              hintText: "Hora Término",
               isPassword: true,
               inputType: TextInputType.text,
             ),

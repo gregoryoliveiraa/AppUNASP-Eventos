@@ -7,7 +7,7 @@ class UserModel {
   String genero;
   CategoryEnum mainCategory;
   CategoryEnum secondaryCategory;
-  double ra;
+  String ra;
 
   UserModel();
 

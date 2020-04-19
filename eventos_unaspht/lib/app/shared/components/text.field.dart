@@ -46,8 +46,7 @@ class CustomTextField extends StatelessWidget {
             icon: IconTheme(
               data: IconThemeData(
                   color: isBlue ? Color(0xFFC2C2C2) : Colors.grey[600]),
-              child: Icon(
-                icon,
+              child: Icon(icon,
                 size: 20, // TAMANHO DO ICONE DENTRO DO CAMPO TEXTO basic_info
               ),
             ),

@@ -35,8 +35,7 @@ class RectangularHomeButton extends StatelessWidget {
               child: Icon(icon),
             ),
           ),
-          Text(
-            text.toUpperCase(),
+          Text(text.toUpperCase(),
           )
         ],
       ),

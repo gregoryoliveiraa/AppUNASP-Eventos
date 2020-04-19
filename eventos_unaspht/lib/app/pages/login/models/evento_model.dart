@@ -1,5 +1,4 @@
 
-
 class EventoModel {
   String id;
   String titulo;

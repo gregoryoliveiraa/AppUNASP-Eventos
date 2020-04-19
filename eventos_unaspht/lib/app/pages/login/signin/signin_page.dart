@@ -16,13 +16,13 @@ class SigninPage extends StatefulWidget {
 
 class _SigninPageState extends State<SigninPage>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation animTransformEmail;
-  Animation animTransformPassword;
-  Animation animButtonSigninCircular;
-  Animation animButtonTransform;
-  Animation animButtonWidth;
-  Animation animOpacityForgetPass;
+      AnimationController _animationController;
+      Animation animTransformEmail;
+      Animation animTransformPassword;
+      Animation animButtonSigninCircular;
+      Animation animButtonTransform;
+      Animation animButtonWidth;
+      Animation animOpacityForgetPass;
 
   @override
   void initState() { super.initState();
@@ -71,6 +71,7 @@ class _SigninPageState extends State<SigninPage>
     double appWidth = MediaQuery.of(context).size.width;
 
     _signIn() {
+      Navigator.of(context).pop();
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => HomeModule()));
     }
@@ -86,30 +87,32 @@ class _SigninPageState extends State<SigninPage>
     }
 
     _forgetPass() {
+      Navigator.of(context).pop();
       Navigator.of(context)
           .push(CupertinoPageRoute(builder: (context) => RecoverPassPage()));
     }
 
     _signUp() {
+      Navigator.of(context).pop();
       Navigator.of(context)
           .push(CupertinoPageRoute(builder: (context) => SignupPage()));
     }
 
     return Scaffold(
-      backgroundColor: BLUE,
+      backgroundColor: BLUE,      
       body: SingleChildScrollView(
         child: Padding( 
           padding: EdgeInsets.only(left: appWidth * .1, right: appWidth * .1),
           child: Center(
             child: Column(
               children: <Widget>[
-                SizedBox(height: appWidth * .4,),
+                SizedBox(height: appWidth * .3,),
                 Image.asset("assets/img/isolado_branco.png", width: 280,),
                 SizedBox(height: appWidth * 0.1,),
                 AnimatedBuilder(animation: animTransformEmail,
                   child: CustomTextField(
                     hintText: "E-mail",
-                    autofocus: true,                    
+                    autofocus: true,
                     icon: FontAwesomeIcons.solidEnvelope,
                     isPassword: false,
                     isBlue: true,
@@ -188,7 +191,7 @@ class _SigninPageState extends State<SigninPage>
                     builder: (BuildContext context, Widget child) {
                       return Opacity(
                         opacity: animOpacityForgetPass.value,
-                        child: child,
+                        child: child,                        
                       );
                     },
                   ),

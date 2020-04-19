@@ -19,7 +19,7 @@ class SquareHomeButton extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.grey[900],
-              blurRadius: 7.0, // has the effect of softening the shadow
+              blurRadius: 9.0, // has the effect of softening the shadow
             )
           ]),
       width: appWidth * .3,
@@ -30,11 +30,11 @@ class SquareHomeButton extends StatelessWidget {
           IconTheme(
             data: IconThemeData(color: color),
             child: Icon(icon),
+
           ),
           SizedBox(height: 15,),
           Text(text.toUpperCase(),
-          textAlign: TextAlign.center,
-          
+          textAlign: TextAlign.center,          
           )
         ],
       ),

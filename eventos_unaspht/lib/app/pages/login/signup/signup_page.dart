@@ -6,6 +6,7 @@ import 'package:eventos_unaspht/app/pages/login/signup/steps/gender_step.dart';
 import 'package:eventos_unaspht/app/pages/login/signup/steps/ra_step.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../app_module.dart';
 
 class SignupPage extends StatefulWidget {
   @override
@@ -30,6 +31,8 @@ class _SignupPageState extends State<SignupPage> {
                 onPressed: () {
                 if (signupBloc.pageController.page == 0) {
                   Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (BuildContext context) => AppModule()));
                   } else {
                     signupBloc.pageController.previousPage(
                       duration: Duration(milliseconds: 100),
@@ -38,8 +41,8 @@ class _SignupPageState extends State<SignupPage> {
                 },
               ),
             ),
-            body: (snapshot.hasData && snapshot.data) ? 
-            Center(
+            body: (snapshot.hasData && snapshot.data) ?
+            Center( 
               child: CircularProgressIndicator(),
             ): 
             PageView(

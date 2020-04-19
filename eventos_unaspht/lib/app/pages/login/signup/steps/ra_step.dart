@@ -26,7 +26,8 @@ class _RAStepState extends State<RAStep> {
             Text("Informe seu RA".toUpperCase(),
             style: TextStyle(
               color: Theme.of(context).primaryColor,
-              fontSize: 18)),
+              fontSize: 18,
+            )),
             SizedBox(height: 20),
             CustomTextField(
               icon: FontAwesomeIcons.idCard,
@@ -42,6 +43,7 @@ class _RAStepState extends State<RAStep> {
               onTap: () async {
                  bool res = await signupBloc.onTap(context);
                  if (res) {
+                   Navigator.of(context).pop();
                    Navigator.of(context).pushReplacement(
                      MaterialPageRoute(builder: (context) => SigninPage()));
                  }

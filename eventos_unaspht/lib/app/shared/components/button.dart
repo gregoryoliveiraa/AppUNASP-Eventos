@@ -49,7 +49,7 @@ class _ButtonState extends State<Button> {
     return GestureDetector(
       onTap: widget.enabled ? widget.onTap : null,
       child: Container(
-        height: 45,
+        height: 55,
         width: widget.width,
         decoration: BoxDecoration(
             color: widget.enabled ? widget.color : Colors.grey,
