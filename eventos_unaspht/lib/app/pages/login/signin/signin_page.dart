@@ -170,7 +170,7 @@ class _SigninPageState extends State<SigninPage>
                         GestureDetector(
                           onTap: _signUp,
                           child: Text("Cadastre-se".toUpperCase(),
-                            style: TextStyle(fontSize: 14, color: Colors.white),
+                            style: TextStyle(fontSize: 16, color: Colors.white),
                           ),
                         ),
                         Text("   |   ",
@@ -180,9 +180,7 @@ class _SigninPageState extends State<SigninPage>
                         GestureDetector(
                           onTap: _forgetPass,
                           child: Text("Esqueci minha senha".toUpperCase(),
-                            style: TextStyle(
-                              fontSize: 14, 
-                              color: Colors.white),
+                            style: TextStyle(fontSize: 16, color: Colors.white),
                           ),
                         )
                       ],

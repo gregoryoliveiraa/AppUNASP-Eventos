@@ -9,8 +9,10 @@ import '../../../app_module.dart';
 
 class SignupBloc extends BlocBase {
   final LoginRepository loginRepository;
+
   GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
   GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
   PageController pageController = PageController();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -67,8 +69,7 @@ class SignupBloc extends BlocBase {
 
   onTap(BuildContext context) async {
     if (mainCategoryController.hasValue && 
-          mainCategoryController.value == 
-            CategoryEnum.Church || raController.text != null) {
+          mainCategoryController.value == CategoryEnum.Church || raController.text != null) {
               isLoadingController.add(true);
               String res = await sendData();
               isLoadingController.add(false);

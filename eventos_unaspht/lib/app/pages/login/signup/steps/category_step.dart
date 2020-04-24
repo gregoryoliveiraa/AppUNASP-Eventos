@@ -34,8 +34,7 @@ class _CategoryStepState extends State<CategoryStep> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                      "Selecione a categoria".toUpperCase(),
+                  Text("Selecione a categoria".toUpperCase(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
@@ -61,7 +60,7 @@ class _CategoryStepState extends State<CategoryStep> {
                           horizontal: true,
                           icon: FontAwesomeIcons.bed,
                           title: "Internato",
-                          isSelected: s.hasData && s.data == CategoryEnum.Internship,
+                          isSelected: s.hasData && s.data == CategoryEnum.Church,
                         ),
                       ),
                       SizedBox(height: 10),
@@ -71,7 +70,7 @@ class _CategoryStepState extends State<CategoryStep> {
                           horizontal: true,
                           icon: FontAwesomeIcons.home,
                           title: "Externato",
-                          isSelected: s.hasData && s.data == CategoryEnum.External,
+                          isSelected: s.hasData && s.data == CategoryEnum.Church,
                         ),
                       ),
                     ],

@@ -1,9 +1,9 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:eventos_unaspht/app/pages/login/signin/signin_page.dart';
 import 'package:eventos_unaspht/app/pages/login/signup/signup_bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:eventos_unaspht/app/pages/login/recovery_pass/recover_pass_bloc.dart';
 import 'package:eventos_unaspht/app/pages/login/signin/signin_bloc.dart';
-import 'package:eventos_unaspht/app/pages/login/signin/signin_page.dart';
 import 'package:eventos_unaspht/app/pages/login/signup/login_repository.dart';
 
 

@@ -38,7 +38,7 @@ class CustomTextField extends StatelessWidget {
             fontSize: 18, color: isBlue ? //TAMANHO DO CAMPO TEXTFIELD basic_info
             Color(0xFFC2C2C2) : Colors.grey[600]),
         decoration: InputDecoration(
-          // ESTILO DA FONTE
+          /*ESTILO DA FONTE*/
             hintStyle: TextStyle(
                 color: isBlue ? Color(0xFFC2C2C2) : Colors.grey[600],
                 fontSize: 18),

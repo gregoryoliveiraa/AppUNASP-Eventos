@@ -1,11 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:eventos_unaspht/app/pages/eventos/event_list.dart';
 import 'package:eventos_unaspht/app/pages/eventos/event_page.dart';
-import 'package:eventos_unaspht/app/pages/sobre/sobreAppUnasp.dart';
+import 'package:eventos_unaspht/app/pages/home/about.dart';
+import 'package:eventos_unaspht/app/shared/constants.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../app_module.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,25 +17,29 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    Color orange = Theme.of(context).secondaryHeaderColor;
-    return Scaffold(
+    return new MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: 'Flexo',secondaryHeaderColor: ORANGE,primaryColor: BLUE),
+      home: new Scaffold(
       appBar: AppBar(
+        backgroundColor: BLUE,
         centerTitle: true,
         title: Text("HOME PAGE".toUpperCase()),
         actions: <Widget>[
           new IconButton(
-              icon: Icon(FontAwesomeIcons.search),
+              icon: Icon(Icons.search),
               color: Colors.grey[300],
               onPressed: () {} // CRIAR POPUP DE PESQUISA
               ),
         ],
       ),
 
-//GRELHA
+
+/*_____MENU LATERAL________________________________________________________________________________*/
       drawer: new Drawer(
         child: new ListView(
           children: <Widget>[
-            new UserAccountsDrawerHeader(
+            UserAccountsDrawerHeader(
               accountName: Text("Marcelo",style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.grey[300],
@@ -52,29 +58,22 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            InkWell(
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => AppModule()));
-              },
+
+            InkWell(              
               child: ListTile(
                 title: Text('Sair'.toUpperCase(), style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.grey[700],
                   fontSize: 18)),
                 leading: Icon(Icons.home, size: 35,),
-                trailing: Icon(Icons.arrow_forward,
-                  size: 25,
-                ),
+                trailing: Icon(Icons.arrow_forward, size: 25,),
               ),
-            ),
-            InkWell(
               onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => AppModule()));
+                _confirmaSair();
               },
+            ),
+
+            InkWell(
               child: ListTile(
                 title: Text("Perfil", style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -85,13 +84,12 @@ class _HomePageState extends State<HomePage> {
                   size: 25,
                 ),
               ),
-            ),
-            InkWell(
               onTap: () {
                 Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => EventList()));
               },
+            ),
+
+            InkWell(              
               child: ListTile(
                 title: Text('Eventos', style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -102,45 +100,35 @@ class _HomePageState extends State<HomePage> {
                   size: 25,
                 ),
               ),
-            ),
-            InkWell(
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => AppModule()));
+                    builder: (BuildContext context) => EventPage()));
               },
-              child: ListTile(
-                title: Text('Ajustes', style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey[700],
-                  fontSize: 18)),
-                leading: Icon(Icons.settings, size: 35,),
-                trailing: Icon(Icons.arrow_forward,
-                  size: 25,
-                ),
-              ),
             ),
+
             InkWell(
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => SobreAppUnasp()));
-              },
               child: ListTile(
                 title: Text('Sobre', style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.grey[700],
                   fontSize: 18)),
-                leading: Icon(Icons.help,color: orange, size: 35,),
+                leading: Icon(Icons.help,color: ORANGE, size: 35,),
                 trailing: Icon(Icons.arrow_forward,
                   size: 25,
                 ),
               ),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => About()));
+              },
             ),
           ],
         ),
       ),
 
+/*_____BODY________________________________________________________________________________*/
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -152,10 +140,10 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   IconButton(
                     icon: Icon(
-                      Icons.event_available, size: 40.0,semanticLabel: "Cadastrar",),
+                      Icons.event_available, size: 40.0,),
                     color: Colors.grey[600],
                     tooltip: 'Cadastrar Evento',
-                    focusColor: Colors.orange,
+                    focusColor: Colors.orange[900],
                     onPressed: () {
                       Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => EventPage()));
@@ -165,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                     icon: Icon(Icons.view_list, size: 40.0, semanticLabel: "Listar",),
                     color: Colors.grey[600],
                     tooltip: 'Listar Eventos',
-                    focusColor: Colors.green,
+                    focusColor: Colors.orange[900],
                     onPressed: () {
                       Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => EventList()));
@@ -173,41 +161,28 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-
-              // Row(mainAxisAlignment:
-              // MainAxisAlignment.spaceEvenly,children: <Widget>[
-              //   SquareHomeButton("Cadastrar Evento", Colors.grey,
-              //     FontAwesomeIcons.userEdit, context),
-              //   SquareHomeButton("Listar Eventos", Colors.grey,
-              //     FontAwesomeIcons.list, context),
-              //   SquareHomeButton("Editar Eventos", Colors.grey,
-              //     FontAwesomeIcons.edit, context)
-              // ],
-              // ),
-              SizedBox(
-                height: 160,
-              ),
+              SizedBox(height: 100,),
               Text("próximos eventos".toUpperCase(),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Theme.of(context).primaryColor,
-                      fontSize: 18)),
-              SizedBox(
-                height: 10,
+                      color: BLUE,
+                      fontSize: 18
+                  )
               ),
+              SizedBox(height: 10,),
               _news(context),
-              SizedBox(
-                height: 50,
-              ),
+              SizedBox(height: 50,),
             ],
           ),
         ),
       ),
+
+/*_____MENU INFERIOR________________________________________________________________________________*/      
       bottomNavigationBar: FancyBottomNavigation(
         initialSelection: 1,
         tabs: [
-
+          
           TabData(iconData: FontAwesomeIcons.userAlt,
             title: "PERFIL",
           ),
@@ -226,15 +201,17 @@ class _HomePageState extends State<HomePage> {
             onclick: _evento,
           ),
         ],
-        circleColor: orange,
-        inactiveIconColor: orange,
+        circleColor: ORANGE,
+        inactiveIconColor: ORANGE,
         onTabChangedListener: (position) {
           setState(() {});
         },
       ),
+    ),
     );
   }
 
+/*_____CARROSEL________________________________________________________________________________*/
   Widget _news(BuildContext context) {
     double appWidth = MediaQuery.of(context).size.width;
     return CarouselSlider(
@@ -316,10 +293,96 @@ class _HomePageState extends State<HomePage> {
     Navigator.of(context).push(
         MaterialPageRoute(builder: (BuildContext context) => AppModule()));
   }
+
   _evento() {
     Navigator.of(context).pop();
     Navigator.of(context).push(
-        MaterialPageRoute(builder: (BuildContext context) => EventPage()));
+        MaterialPageRoute(builder: (BuildContext context) => EventList()));
   }
+
+  _confirmaSair() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context){
+        return AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Container(
+                child: Text("Deseja Sair?",
+                textAlign: TextAlign.center,
+                style: TextStyle( color: ORANGE,
+                  fontSize: 20,
+                ),
+                ),
+              ),
+              SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  FlatButton(
+                    color: Colors.grey[300],
+                    child: Text('SIM',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) => AppModule()));
+                    }
+                  ),
+                  FlatButton(
+                    color: Colors.grey[300],
+                    child: Text('NÃO',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+                    }
+                  )
+                ]
+              )
+            ],
+          ),
+        );
+      }    
+    );
+  }
+
+
+
+
+  //       return AlertDialog(
+  //         content: Text("Deseja realmente Sair?", textAlign: TextAlign.center,),
+  //         actions: <Widget>[
+  //           SizedBox(height: 30),
+  //           new RaisedButton(
+  //             child: Text("SIM"),
+  //             onPressed: (){
+  //               Navigator.of(context).pop();
+  //               Navigator.of(context).push(MaterialPageRoute(
+  //                 builder: (BuildContext context) => AppModule()));
+  //           }),
+  //           new RaisedButton(
+  //             child: Text("NÃO"),
+  //             onPressed: (){
+  //               Navigator.of(context).pop();
+  //           }),
+  //         ],
+  //       );
+  //     }    
+  //   );
+  // }
+
+
+
+
 
 }
